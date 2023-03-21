@@ -8,7 +8,7 @@
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: 'IndexPage',
+  name: 'MainPage',
   components: { },
   setup () {
     return {};

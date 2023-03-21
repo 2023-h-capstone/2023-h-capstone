@@ -11,6 +11,8 @@
 
 const { configure } = require('quasar/wrappers');
 
+// This will load from `.env` if it exists, but not override existing `process.env.*` values
+require('dotenv').config()
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -30,7 +32,7 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      
+
       'axios',
     ],
 
@@ -69,7 +71,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        KAKAOMAP_KEY: process.env.KAKAOMAP_KEY
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -79,7 +83,7 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      
+
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
       // ]
@@ -138,7 +142,7 @@ module.exports = configure(function (/* ctx */) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      prodPort: 3000, // The default port that the production server should use
+      prodPort: 80, // The default port that the production server should use
                       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [

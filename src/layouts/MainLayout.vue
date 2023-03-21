@@ -1,116 +1,64 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <div id="map" style="width: 100%; height: 100vh;"></div>
   </q-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
 
 export default defineComponent({
   name: 'MainLayout',
-
   components: {
-    EssentialLink
   },
-
   setup () {
-    const leftDrawerOpen = ref(false)
-
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
     }
-  }
+  },
+  data() {
+    return {
+      map: null,
+      infowindow: null,
+      ps: null,
+      windowHeight: '',
+      searchText: '',
+      markers: [],
+      places: []
+    }
+  },
+  async mounted() {
+    if (!window.kakao || !window.kakao.maps) {
+      // script 태그 객체 생성
+      const script = document.createElement('script');
+      // src 속성을 추가하며 .env.local에 등록한 service 키 활용
+      // 동적 로딩을 위해서 autoload=false 추가
+      script.src =
+        '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=' +
+        `${process.env.KAKAOMAP_KEY}` +
+        '&libraries=services,clusterer,drawing';
+      /* global kakao */
+      document.head.appendChild(script);
+      script.addEventListener('load', () => {
+        kakao.maps.load(this.initMap);
+      });
+    } else {
+      this.initMap();
+    }
+  },
+  methods: {
+    initMap: function () {
+      setTimeout(()=>{
+        const container = document.getElementById('map')
+        const options = {
+          center: new kakao.maps.LatLng(37.566826, 126.9786567),
+          level: 5,
+        };
+        this.map = new kakao.maps.Map(container, options);
+        this.infowindow = new kakao.maps.InfoWindow({ zIndex:1 });
+        this.ps = new kakao.maps.services.Places();
+      }, 100)
+    },
+  },
 });
 </script>
