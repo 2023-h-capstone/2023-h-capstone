@@ -7,9 +7,9 @@
             <img src="https://i.pinimg.com/564x/6c/ab/38/6cab3803e1d182a6c2e53fc62e821efa.jpg">
           </q-avatar>
         </q-toolbar-title>
-        <q-input style="width: 70%;" filled v-model="text" label="Label" :dense="dense">
+        <q-input style="width: 70%;" filled v-model="searchText" @keydown.enter="search" label="Label" :dense="true">
           <template v-slot:append>
-            <q-icon name="search" />
+            <q-icon name="search" @click="search" />
           </template>
         </q-input>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
@@ -18,48 +18,16 @@
     <q-footer reveal elevated class="bg-cyan-8">
       <q-toolbar>
         <div style="width: 20%;">
-          <q-btn flat round color="red" size="1.5rem" icon="favorite" />
-          <q-btn flat round color="yellow" size="1.5rem" icon="grade" />
+          <q-btn flat round :color="favoriteFlag ? 'red' : 'grey'" @click="favoriteFlag=!favoriteFlag" size="1.5rem" icon="favorite" />
+          <q-btn flat round :color="gradeFlag ? 'yellow' : 'grey'" @click="gradeFlag=!gradeFlag" size="1.5rem" icon="grade" />
         </div>
         <q-list style="width: 80%;" class="flex row justify-center">
-          <q-item clickable>
+          <q-item v-for="(item, key) in placeCategory" v-bind:key="key" clickable>
             <q-item-section avatar>
               <q-icon color="primary" name="local_bar" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>#가성비</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable>
-            <q-item-section avatar>
-              <q-icon color="red" name="local_gas_station" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>#분식</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable>
-            <q-item-section avatar>
-              <q-icon color="amber" name="local_movies" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>#떡볶이</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable>
-            <q-item-section avatar>
-              <q-icon color="primary" name="local_bar" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>#튀김</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable>
-            <q-item-section avatar>
-              <q-icon color="red" name="local_gas_station" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>#김밥</q-item-label>
+              <q-item-label>#{{item}}</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
@@ -82,17 +50,17 @@
             </q-item-section>
           </q-item>
           <div style="margin: 20px;">
-            <q-input style="margin: 5px" v-model="text" label="해쉬태그 필터" :dense="dense" />
-            <q-input style="margin: 5px" v-model="text" label="지역구 필터" :dense="dense" />
+            <q-input style="margin: 5px" v-model="hashTagFilter" label="해쉬태그 필터" :dense="true" />
+            <q-input style="margin: 5px" v-model="placeFilter" label="지역구 필터" :dense="true" />
           </div>
           <q-card class="side-card" style="margin: 20px;">
             <img src="https://i.pinimg.com/564x/ce/19/82/ce198281144f1ab908872fa81edbdf95.jpg">
 
             <q-card-section>
-              <div class="text-h6">멘야산다이메</div>
-              <div class="text-subtitle2">서울 종로구 명륜4가 147-1</div>
+              <div class="text-h6">{{placeName}}</div>
+              <div class="text-subtitle2">{{placeAddress}}</div>
             </q-card-section>
-
+            <q-space/>
             <q-card-section class="q-pt-none">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -110,7 +78,6 @@
             <div class="text-weight-bold"><h5 style="margin: 0;">농담곰</h5></div>
             <q-btn style="width: 100%; margin-top: 10px;" color="white" text-color="black" label="훔쳐볼 친구 추가하기" />
           </div>
-
         </div>
       </q-img>
     </q-drawer>
@@ -120,6 +87,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import {useQuasar} from 'quasar';
 
 
 export default defineComponent({
@@ -128,38 +96,50 @@ export default defineComponent({
   },
   setup () {
     return {
-      drawer: ref(false)
+      drawer: ref(false),
+      $q: useQuasar()
     }
   },
   data() {
     return {
-      map: null,
-      infowindow: null,
-      ps: null,
-      windowHeight: '',
-      searchText: '',
-      markers: [],
-      places: []
+      map: ref(null),
+      infowindow: ref(null),
+      ps: ref(null),
+      searchText: ref<string>(''),
+      hashTagFilter:ref<string>(''),
+      placeFilter:ref<string>(''),
+      markers: ref<any>([]),
+      places: ref<any>([]),
+      placeName:' 멘야산다이메 대학로점',
+      placeAddress:'서울 종로구 창경궁로26길 38-2 1층',
+      placeCategory: ref<string[]>([]),
+      favoriteFlag: false,
+      gradeFlag: false
     }
   },
   async mounted() {
-    if (!window.kakao || !window.kakao.maps) {
-      // script 태그 객체 생성
-      const script = document.createElement('script');
-      // src 속성을 추가하며 .env.local에 등록한 service 키 활용
-      // 동적 로딩을 위해서 autoload=false 추가
-      script.src =
-        '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=' +
-        `${process.env.KAKAOMAP_KEY}` +
-        '&libraries=services,clusterer,drawing';
-      /* global kakao */
-      document.head.appendChild(script);
-      script.addEventListener('load', () => {
-        kakao.maps.load(this.initMap);
-      });
-    } else {
-      this.initMap();
-    }
+    this.$q.loading.show()
+    setTimeout(()=>{
+      if (!window.kakao || !window.kakao.maps) {
+        // script 태그 객체 생성
+        const script = document.createElement('script');
+        // src 속성을 추가하며 .env.local에 등록한 service 키 활용
+        // 동적 로딩을 위해서 autoload=false 추가
+        script.src =
+          '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=' +
+          `${process.env.KAKAOMAP_KEY}` +
+          '&libraries=services,clusterer,drawing';
+        /* global kakao */
+        document.head.appendChild(script);
+        script.addEventListener('load', () => {
+          kakao.maps.load(this.initMap);
+        });
+      } else {
+        this.initMap();
+      }
+      this.$q.loading.hide()
+    }, 1000)
+
   },
   methods: {
     initMap: function () {
@@ -174,6 +154,59 @@ export default defineComponent({
         this.ps = new kakao.maps.services.Places();
       }, 100)
     },
+    placesSearchCB: function(data: string | any[], status: any, pagination: any) {
+      if (status === kakao.maps.services.Status.OK) {
+        // MARK: 기존 마커 삭제
+        if(this.markers.length !== 0) {
+          if(this.infowindow != null) {
+            this.infowindow.close()
+          }
+          for(let i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null)
+          }
+          this.markers = []
+        }
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        const bounds = new kakao.maps.LatLngBounds();
+        this.places = []
+        for (let i=0; i<data.length; i++) {
+          this.places.push(data[i])
+          this.displayMarker(data[i]);
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        if(this.map != null) {
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+          this.map.setBounds(bounds);
+        }
+      }
+    },
+    // 지도에 마커를 표시하는 함수입니다
+    displayMarker: function(place: { y: any; x: any; place_name: string; road_address_name:string; category_name: string }) {
+      // 마커를 생성하고 지도에 표시합니다
+      const marker = new kakao.maps.Marker({
+        map: this.map,
+        position: new kakao.maps.LatLng(place.y, place.x)
+      });
+      this.markers.push(marker)
+      // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, 'click', () => {
+        this.placeName = place.place_name
+        this.placeAddress = place.road_address_name
+        this.placeCategory = place.category_name.split(' > ')
+        if(this.infowindow != null) {
+          // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+          this.infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+          this.infowindow.open(this.map, marker);
+        }
+      });
+    },
+    search: function() {
+      if(this.ps != null) {
+        this.ps.keywordSearch(this.searchText, this.placesSearchCB);
+        this.searchText = ''
+      }
+    }
   },
 });
 </script>

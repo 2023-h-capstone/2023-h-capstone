@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import {useQuasar} from 'quasar';
 
 
 export default defineComponent({
@@ -19,6 +20,7 @@ export default defineComponent({
 
   setup () {
     return {
+      $q: useQuasar()
     }
   }
 });

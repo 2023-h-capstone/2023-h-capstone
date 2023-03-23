@@ -11,7 +11,9 @@ export default defineComponent({
   name: 'IndexPage',
   components: { },
   setup () {
-    return {};
+    return {
+
+    };
   }
 });
 </script>
