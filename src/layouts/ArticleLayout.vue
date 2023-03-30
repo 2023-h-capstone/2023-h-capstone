@@ -12,7 +12,7 @@ import MainDrawer from 'components/MainDrawer.vue';
 
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: 'ArticleLayout',
   components: {MainDrawer},
   setup () {
     return {

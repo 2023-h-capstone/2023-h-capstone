@@ -123,20 +123,20 @@ road_address_name: "서울 종로구 평창문화로 19"
   ] as any
 }
 
-export const myPlaces = {
-  smu: {
+export const myPlaces = [
+  {
     id: 0,
-    name:'상명대 맛집모듬.zip',
-    tags: ['#종로', '#언덕싫어', '#학식싫어', '#찐맛집']
+    name: '상명대 맛집모듬.zip',
+    tags: ['#종로', '#언덕싫어', '#학식싫어', '#찐맛집'],
   },
-  gangnam: {
+  {
     id: 0,
-    name:'강남핫플 카페',
+    name: '강남핫플 카페',
     tags: ['#강남', '#강남역', '#사람많아', '#커피비싸', '#사진맛집']
   },
-  jongro: {
+  {
     id: 0,
-    name:'종로 밥집',
+    name: '종로 밥집',
     tags: ['#종로', '#종각', '#종조로종종', '#로컬맛집']
   }
-}
+]
