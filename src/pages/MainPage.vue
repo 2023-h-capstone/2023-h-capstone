@@ -1,17 +1,28 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <router-view></router-view>
-  </q-page>
+  main page
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import {useQuasar} from 'quasar';
+
 
 export default defineComponent({
   name: 'MainPage',
-  components: { },
   setup () {
-    return {};
-  }
+    return {
+    }
+  },
+  data() {
+    return {
+      //
+    }
+  },
+  mounted() {
+    //
+  },
+  methods: {
+    //
+  },
 });
 </script>
