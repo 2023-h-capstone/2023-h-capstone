@@ -21,6 +21,14 @@ const routes: RouteRecordRaw[] = [
       { path: 'write', component: () => import('pages/article/WritePage.vue') },
     ],
   },
+  {
+    path: '/favorites',
+    component: () => import('layouts/favoritesLayout.vue'),
+    children: [
+      // { path: 'ex1', component: () => import('pages/favorites/ex_1.vue') },
+      { path: 'test1', component: () => import('pages/favorites/test_1.vue') },
+    ],
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

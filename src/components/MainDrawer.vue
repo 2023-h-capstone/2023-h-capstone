@@ -27,7 +27,8 @@
     </q-dialog>
     <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
       <q-list padding>
-        <q-item clickable v-ripple>
+
+        <q-item clickable v-ripple to= "/favorites">
           <q-item-section avatar>
             <q-icon name="star" />
           </q-item-section>
@@ -35,6 +36,7 @@
             내 즐겨찾기 모음
           </q-item-section>
         </q-item>
+
         <q-item clickable v-ripple to="/article/themes">
           <q-item-section avatar>
             <q-icon name="edit" />
