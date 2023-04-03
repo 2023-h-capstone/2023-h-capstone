@@ -3,17 +3,40 @@
   <head>
     <title><%= productName %></title>
 
-    <meta charset="utf-8">
-    <meta name="description" content="<%= productDescription %>">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
+    <meta charset="utf-8" />
+    <meta name="description" content="<%= productDescription %>" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
+    />
 
-    <link rel="icon" type="image/png" sizes="128x128" href="icons/favicon-128x128.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="icons/favicon-128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icons/favicon-16x16.png"
+    />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
@@ -22,24 +45,23 @@
   </head>
   <body>
     <!-- quasar:entry-point -->
-    
   </body>
-  
+
   <script>
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "firebase/app";
+    import { initializeApp } from 'firebase/app';
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyBmzQSGMvsf24rojm3jUE0aBt55MIcAaLY",
-      authDomain: "spadger-8c105.firebaseapp.com",
-      databaseURL: "https://spadger-8c105-default-rtdb.firebaseio.com",
-      projectId: "spadger-8c105",
-      storageBucket: "spadger-8c105.appspot.com",
-      messagingSenderId: "724923930813",
-      appId: "1:724923930813:web:d606bb4aec8752ba72ffd4"
+      apiKey: 'AIzaSyBmzQSGMvsf24rojm3jUE0aBt55MIcAaLY',
+      authDomain: 'spadger-8c105.firebaseapp.com',
+      databaseURL: 'https://spadger-8c105-default-rtdb.firebaseio.com',
+      projectId: 'spadger-8c105',
+      storageBucket: 'spadger-8c105.appspot.com',
+      messagingSenderId: '724923930813',
+      appId: '1:724923930813:web:d606bb4aec8752ba72ffd4',
     };
 
     // Initialize Firebase

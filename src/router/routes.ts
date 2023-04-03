@@ -9,22 +9,23 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/main',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/MainPage.vue') },
-    ],
+    children: [{ path: '', component: () => import('pages/MainPage.vue') }],
   },
   {
     path: '/mypage',
     component: () => import('layouts/MypageLayout.vue'),
     children: [
-      { path: 'mypage', component: () => import('src/pages/MypagePage.vue') },
+      { path: 'mypage', component: () => import('pages/MypagePage.vue') },
     ],
   },
   {
     path: '/article',
     component: () => import('layouts/ArticleLayout.vue'),
     children: [
-      { path: 'themes', component: () => import('pages/article/ThemesPage.vue') },
+      {
+        path: 'themes',
+        component: () => import('pages/article/ThemesPage.vue'),
+      },
       { path: 'write', component: () => import('pages/article/WritePage.vue') },
     ],
   },

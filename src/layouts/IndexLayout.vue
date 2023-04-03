@@ -10,18 +10,16 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import {useQuasar} from 'quasar';
-
+import { useQuasar } from 'quasar';
 
 export default defineComponent({
   name: 'IndexLayout',
-  components: {
-  },
+  components: {},
 
-  setup () {
+  setup() {
     return {
-      $q: useQuasar()
-    }
-  }
+      $q: useQuasar(),
+    };
+  },
 });
 </script>

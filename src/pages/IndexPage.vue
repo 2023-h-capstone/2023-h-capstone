@@ -9,11 +9,9 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { },
-  setup () {
-    return {
-
-    };
-  }
+  components: {},
+  setup() {
+    return {};
+  },
 });
 </script>
