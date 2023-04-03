@@ -1,61 +1,48 @@
 <template>
-  <div class="q-pa-md" style="max-width: 350px">
-    <q-list bordered class="rounded-borders">
-      <q-expansion-item
-        expand-separator
-        icon="perm_identity"
-        label="Account settings"
-        caption="John Doe"
-      >
-        <q-card>
-          <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-            commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-            eveniet doloribus ullam aliquid.
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
+<q-layout style="text-align: center; padding-top: 5vh; padding-left:25rem;">
+  <q-avatar size="250px" style="text-align: center;">
+      <img src='../assets/profileTest.jpg'>
+    </q-avatar>
+    <div style="font-size: 2em; font-weight: bolder;padding-bottom: 2em;">사용자 닉네임1</div>
 
-      <q-expansion-item
-        expand-separator
-        icon="signal_wifi_off"
-        label="Wifi settings"
-      >
-        <q-card>
-          <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-            commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-            eveniet doloribus ullam aliquid.
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
+    <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-icon color="primary" name="bluetooth" />
+        </q-item-section>
 
-      <q-expansion-item
-        expand-separator
-        icon="drafts"
-        label="Drafts"
-        header-class="text-purple"
-      >
-        <q-card>
-          <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-            commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-            eveniet doloribus ullam aliquid.
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
+        <q-item-section>Icon as avatar(여기부터는)</q-item-section>
+      </q-item>
 
-      <q-expansion-item icon="assessment" label="Disabled" disable>
-        <q-card>
-          <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-            commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-            eveniet doloribus ullam aliquid.
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
-    </q-list>
-  </div>
+      <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-avatar color="teal" text-color="white" icon="bluetooth" />
+        </q-item-section>
+
+        <q-item-section>Avatar-type icon(테스트)</q-item-section>
+      </q-item>
+
+      <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-avatar rounded color="purple" text-color="white" icon="bluetooth" />
+        </q-item-section>
+
+        <q-item-section>Rounded avatar-type icon(내용입니다)</q-item-section>
+      </q-item>
+
+      <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-avatar color="primary" text-color="white">
+            R
+          </q-avatar>
+        </q-item-section>
+
+        <q-item-section>Letter avatar-type(진행 중)</q-item-section>
+      </q-item>
+
+      <q-separator />
+
+
+</q-layout>
   </template>
   
   <script lang="ts">
