@@ -12,7 +12,7 @@
   
   
   export default defineComponent({
-    name: 'MypageLayout',
+    name: 'MyPageLayout',
     components: {MainDrawer},
     setup () {
       return {
