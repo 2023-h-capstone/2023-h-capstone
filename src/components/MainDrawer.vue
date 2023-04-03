@@ -65,9 +65,9 @@
             나는 오늘 뭘 먹을까
           </q-item-section>
         </q-item>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/mypage/mypage">
           <q-item-section avatar>
-            <q-icon name="face" />
+            <q-icon name="face"/>
           </q-item-section>
           <q-item-section>
             마이페이지

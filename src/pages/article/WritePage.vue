@@ -1,10 +1,11 @@
 <template>
   <q-layout id="map" :style="mapStyle"></q-layout>
   <q-footer reveal elevated class="bg-cyan-8 justify-end">
+    <h5 style="margin:1.5%;">{{myPlaces[0].name}}</h5>
     <q-input color="white" filled bottom-slots v-model="tag" label="태그를 추가해주세요" counter maxlength="12">
       <template v-slot:after>
         <q-btn
-          @click="() => { this.placeCategory.push(this.tag); this.tag = '' }"
+          @click="() => { this.placeCategory.push('#'+this.tag); this.tag = '' }"
           round dense flat icon="send" />
       </template>
     </q-input>
@@ -12,7 +13,7 @@
       <q-list style="width: 100%;" class="flex row justify-start">
         <q-item v-for="(item, key) in placeCategory" v-bind:key="key" clickable>
           <q-item-section>
-            <q-item-label>#{{item}}</q-item-label>
+            <q-item-label>{{item}}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -52,10 +53,13 @@ export default defineComponent({
       placeCategory: ref<string[]>([]),
       favoriteFlag: false,
       gradeFlag: false,
-      tag: ref<string>('')
+      tag: ref<string>(''),
+      placeName: ref<string>(''),
+      placeAddress: ref<string>('')
     }
   },
   async mounted() {
+    this.placeCategory = myPlaces[0].tags
     this.$q.loading.show()
     setTimeout(()=>{
       if (!window.kakao || !window.kakao.maps) {
@@ -131,7 +135,6 @@ export default defineComponent({
       kakao.maps.event.addListener(marker, 'click', () => {
         this.placeName = place.place_name
         this.placeAddress = place.road_address_name
-        this.placeCategory = place.category_name.split(' > ')
         if(this.infowindow != null) {
           // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
           this.infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
@@ -158,10 +161,18 @@ export default defineComponent({
       kakao.maps.event.addListener(marker, 'click', () => {
         this.placeName = place.place_name
         this.placeAddress = place.road_address_name
-        this.placeCategory = place.category_name.split(' > ')
+        let placeTheme = ''
+        place.category_name.split(' > ').forEach(e=>{
+          placeTheme += `#${e}`
+        })
         if(this.infowindow != null) {
           // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-          this.infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+          this.infowindow.setContent(
+            `<div style="padding:5px;font-size:12px;margin: auto;">
+                    <p>${place.place_name}</p>
+                    <p>${placeTheme}</p>
+                    </div>`
+          );
           this.infowindow.open(this.map, marker);
         }
       });
