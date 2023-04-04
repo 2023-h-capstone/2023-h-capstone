@@ -1,14 +1,16 @@
 <template>
-  <q-page class="q-pa-xl">
-    <section class="q-mb-xl">
-      <div class="text-h3">Friend_1</div>
-      <q-separator class="q-my-md" />
+<!--  <q-page class="q-pa-xl">-->
+    <section class="q-pa-xl">
+      <br>
+      <div class="text-h4">Friend_1</div>
+      <br>
+<!--      <q-separator class="q-my-md" />-->
       <!--      friend_1-->
       <q-card class="my-card bg-secondary text-white q-mx-auto">
         <q-card-section>
           <div class="text-h4">테마1</div>
           <div class="text-subtitle2">
-            <!--            <q-icon name="Language" />-->
+                        <q-icon name="star" />
             종로구</div>
         </q-card-section>
 
@@ -22,14 +24,16 @@
         <!--          <q-btn padding="sm" outline>Action 2</q-btn>-->
         <!--        </q-card-actions>-->
       </q-card>
+      <br>
       <!--      friend_7-->
-      <div class="text-h3">Friend_7</div>
-      <q-separator class="q-my-md" />
+      <div class="text-h4">Friend_7</div>
+<!--      <q-separator class="q-my-md" />-->
+      <br>
       <q-card class="my-card bg-secondary text-white q-mx-auto">
         <q-card-section>
           <div class="text-h4">테마7</div>
           <div class="text-subtitle2">
-            <!--            <q-icon name="Language" />-->
+                        <q-icon name="star" />
             서대문구</div>
         </q-card-section>
 
@@ -43,9 +47,11 @@
         <!--          <q-btn padding="sm" outline>Action 2</q-btn>-->
         <!--        </q-card-actions>-->
       </q-card>
+      <br>
       <!--      friend_9-->
-      <div class="text-h3">Friend_9</div>
-      <q-separator class="q-my-md" />
+      <div class="text-h4">Friend_9</div>
+<!--      <q-separator class="q-my-md" />-->
+      <br>
       <q-card class="my-card bg-secondary text-white q-mx-auto">
         <q-card-section>
           <div class="text-h4">테마9</div>
@@ -66,7 +72,7 @@
       </q-card>
 
     </section>
-  </q-page>
+<!--  </q-page>-->
 </template>
 
 <script>

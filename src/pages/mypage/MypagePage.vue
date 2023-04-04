@@ -2,15 +2,15 @@
 <q-layout style="text-align: center; padding-top: 1vh; padding-left:25rem;">
   <q-item style="text-align: center;">
     <q-avatar clickable v-ripple size="250px" style="text-align: center;">
-        <img src='../assets/profileTest.jpg'>
+        <img src='src/assets/profileTest.jpg'>
     </q-avatar>
-      
+
       <q-item-section style="text-align: left; font-size: 2em; font-weight: bolder;padding-bottom: 2em;">my_account_hello</q-item-section>
-  
+
 
   <div style="padding-right: 16vh; padding-top: 14vh;" class="q-pa-md">
     <div class="q-gutter-y-md column">
-      
+
       <q-toolbar class="text-black rounded-borders">
 
         <q-separator dark vertical inset />
@@ -32,7 +32,7 @@
     </div>
   </div>
 </q-item>
-    
+
 
 <q-layout style="text-align: right; ">
     <q-list bordered>
@@ -56,14 +56,14 @@
 
 </q-layout>
   </template>
-  
+
   <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import {useQuasar} from 'quasar';
   import {myPlaces} from 'assets/ContentModel';
 
-  
-  
+
+
   export default defineComponent({
     name: 'MypagePage',
     components: { },
