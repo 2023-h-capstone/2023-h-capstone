@@ -4,6 +4,7 @@
       <q-item v-for="(place, key) in places" v-bind:key="key" class="q-my-sm" clickable v-ripple>
         <q-item-section>
           <q-item-label style="font-size: 20px;">{{ place.name }}</q-item-label>
+          <q-item-label style="font-size: 16x; margin: 5px;">{{ place.place }}</q-item-label>
           <q-item-label style="font-size: 15px;" caption lines="1">
               <span v-for="(tag, key) in place.tags" v-bind:key="key">
                 {{tag}}
@@ -50,6 +51,7 @@ export default defineComponent({
       places: ref<[{
         id: number,
         name: string,
+        place: string,
         tags: [],
       }] | any>(),
       title: ref<string>(''),
