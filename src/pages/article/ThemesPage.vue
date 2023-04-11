@@ -1,5 +1,5 @@
 <template>
-  <q-layout style="text-align: right; padding-top: 5vh">
+  <q-layout style="text-align: left; padding-top: 5vh">
     <q-list bordered>
       <q-item v-for="(place, key) in places" v-bind:key="key" class="q-my-sm" clickable v-ripple>
         <q-item-section>

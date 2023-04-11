@@ -11,8 +11,8 @@
   <q-drawer
     v-model="drawer"
     show-if-above
-    :width="400"
-    :breakpoint="600"
+    :width="200"
+    :breakpoint="400"
   >
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
@@ -25,7 +25,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+    <q-scroll-area style="height: calc(100% - 150px); margin-top: 50px; border-right: 1px solid #ddd">
       <q-list padding>
         <q-item clickable v-ripple>
           <q-item-section avatar>
@@ -74,16 +74,6 @@
       </q-list>
 
     </q-scroll-area>
-
-    <q-img class="absolute-top" src="https://i.pinimg.com/564x/2d/de/41/2dde4170e8b2b36265057013ebe7cfd2.jpg" style="height: 150px">
-      <div class="absolute-bottom bg-transparent">
-        <q-avatar size="56px" class="q-mb-sm">
-          <img src="https://i.pinimg.com/564x/6c/ab/38/6cab3803e1d182a6c2e53fc62e821efa.jpg">
-        </q-avatar>
-        <div class="text-weight-bold text-black">농담곰</div>
-        <div  class="text-weight-bold text-black">damgom@nagano.com</div>
-      </div>
-    </q-img>
   </q-drawer>
 </template>
 
