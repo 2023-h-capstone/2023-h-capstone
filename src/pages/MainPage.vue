@@ -1,22 +1,18 @@
-<template>
-  main page
-</template>
+<template>main page</template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import {useQuasar} from 'quasar';
-
+import { useQuasar } from 'quasar';
 
 export default defineComponent({
   name: 'MainPage',
-  setup () {
-    return {
-    }
+  setup() {
+    return {};
   },
   data() {
     return {
       //
-    }
+    };
   },
   mounted() {
     //

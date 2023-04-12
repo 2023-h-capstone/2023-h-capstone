@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <q-layout style="text-align: center; padding-top: 1vh; padding-left:25rem;">
   <q-item style="text-align: center;">
     <q-avatar clickable v-ripple size="250px" style="text-align: center;">
@@ -112,3 +113,88 @@
   },
 });
   </script>
+=======
+  <q-list bordered class="rounded-borders">
+    <q-expansion-item
+      expand-separator
+      icon="perm_identity"
+      label="Account settings"
+      caption="John Doe"
+    >
+      <q-card>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius
+          reprehenderit eos corrupti commodi magni quaerat ex numquam, dolorum
+          officiis modi facere maiores architecto suscipit iste eveniet
+          doloribus ullam aliquid.
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
+
+    <q-expansion-item
+      expand-separator
+      icon="signal_wifi_off"
+      label="Wifi settings"
+    >
+      <q-card>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius
+          reprehenderit eos corrupti commodi magni quaerat ex numquam, dolorum
+          officiis modi facere maiores architecto suscipit iste eveniet
+          doloribus ullam aliquid.
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
+
+    <q-expansion-item
+      expand-separator
+      icon="drafts"
+      label="Drafts"
+      header-class="text-purple"
+    >
+      <q-card>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius
+          reprehenderit eos corrupti commodi magni quaerat ex numquam, dolorum
+          officiis modi facere maiores architecto suscipit iste eveniet
+          doloribus ullam aliquid.
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
+
+    <q-expansion-item icon="assessment" label="Disabled" disable>
+      <q-card>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius
+          reprehenderit eos corrupti commodi magni quaerat ex numquam, dolorum
+          officiis modi facere maiores architecto suscipit iste eveniet
+          doloribus ullam aliquid.
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
+  </q-list>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { useQuasar } from 'quasar';
+
+export default defineComponent({
+  name: 'MypagePage',
+  setup() {
+    return {};
+  },
+  data() {
+    return {
+      //
+    };
+  },
+  mounted() {
+    //
+  },
+  methods: {
+    //
+  },
+});
+</script>
+>>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
