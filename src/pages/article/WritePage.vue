@@ -1,22 +1,9 @@
 <template>
   <q-layout id="map" :style="mapStyle"></q-layout>
   <q-footer reveal elevated class="bg-cyan-8 justify-end">
-    <h5 style="margin:1.5%;">{{myPlaces[0].name}}</h5>
-    <q-input color="white" filled bottom-slots v-model="tag" label="태그를 추가해주세요" counter maxlength="12">
-      <template v-slot:after>
-        <q-btn
-          @click="() => { this.placeCategory.push('#'+this.tag); this.tag = '' }"
-          round dense flat icon="send" />
-      </template>
-    </q-input>
-    <q-toolbar class="justify-between">
-      <q-list style="width: 100%;" class="flex row justify-start">
-        <q-item v-for="(item, key) in placeCategory" v-bind:key="key" clickable>
-          <q-item-section>
-            <q-item-label>{{item}}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+    <q-input style="font-size: 20px;" standout clearable color="white" filled v-model="myPlaces[0].name"/>
+    <q-input standout clearable color="white" filled v-model="tags"/>
+    <q-toolbar class="justify-end">
       <q-btn to="/main" style="width: 10%" icon="check" color="white" text-color="black"/>
     </q-toolbar>
   </q-footer>
@@ -54,12 +41,16 @@ export default defineComponent({
       favoriteFlag: false,
       gradeFlag: false,
       tag: ref<string>(''),
+      tags: ref<string>(''),
       placeName: ref<string>(''),
       placeAddress: ref<string>('')
     }
   },
   async mounted() {
     this.placeCategory = myPlaces[0].tags
+    this.placeCategory.forEach((e: string)=>{
+      this.tags += `${e}`
+    })
     this.$q.loading.show()
     setTimeout(()=>{
       if (!window.kakao || !window.kakao.maps) {
