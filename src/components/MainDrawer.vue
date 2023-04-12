@@ -6,16 +6,7 @@
     </q-toolbar>
   </q-header>
 
-<<<<<<< HEAD
-  <q-drawer
-    v-model="drawer"
-    show-if-above
-    :width="200"
-    :breakpoint="400"
-  >
-=======
   <q-drawer v-model="drawer" show-if-above :width="400" :breakpoint="600">
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
         <q-card-section class="row items-center no-wrap">
@@ -32,9 +23,6 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-<<<<<<< HEAD
-    <q-scroll-area style="height: calc(100% - 150px); margin-top: 50px; border-right: 1px solid #ddd">
-=======
     <q-scroll-area
       style="
         height: calc(100% - 150px);
@@ -90,8 +78,6 @@
         </q-item>
       </q-list>
     </q-scroll-area>
-<<<<<<< HEAD
-=======
 
     <q-img
       class="absolute-top"
@@ -108,7 +94,6 @@
         <div class="text-weight-bold text-black">damgom@nagano.com</div>
       </div>
     </q-img>
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
   </q-drawer>
 </template>
 

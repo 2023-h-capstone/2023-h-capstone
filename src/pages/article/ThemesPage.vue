@@ -9,20 +9,11 @@
         v-ripple
       >
         <q-item-section>
-<<<<<<< HEAD
-          <q-item-label style="font-size: 20px;">{{ place.name }}</q-item-label>
-          <q-item-label style="font-size: 16x; margin: 5px;">{{ place.place }}</q-item-label>
-          <q-item-label style="font-size: 15px;" caption lines="1">
-              <span v-for="(tag, key) in place.tags" v-bind:key="key">
-                {{tag}}
-              </span>
-=======
           <q-item-label style="font-size: 20px">{{ place.name }}</q-item-label>
           <q-item-label style="font-size: 15px" caption lines="1">
             <span v-for="(tag, key) in place.tags" v-bind:key="key">
               {{ tag }}
             </span>
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
           </q-item-label>
         </q-item-section>
         <q-item-section side>
@@ -67,14 +58,6 @@ export default defineComponent({
         height: '100vh',
         display: 'block',
       },
-<<<<<<< HEAD
-      places: ref<[{
-        id: number,
-        name: string,
-        place: string,
-        tags: [],
-      }] | any>(),
-=======
       places: ref<
         | [
             {
@@ -85,7 +68,6 @@ export default defineComponent({
           ]
         | any
       >(),
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
       title: ref<string>(''),
       tag: ref<string>(''),
       tags: ref<string[]>([]),

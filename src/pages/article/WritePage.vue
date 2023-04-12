@@ -1,12 +1,6 @@
 <template>
   <q-layout id="map" :style="mapStyle"></q-layout>
   <q-footer reveal elevated class="bg-cyan-8 justify-end">
-<<<<<<< HEAD
-    <q-input style="font-size: 20px;" standout clearable color="white" filled v-model="myPlaces[0].name"/>
-    <q-input standout clearable color="white" filled v-model="tags"/>
-    <q-toolbar class="justify-end">
-      <q-btn to="/main" style="width: 10%" icon="check" color="white" text-color="black"/>
-=======
     <h5 style="margin: 1.5%">{{ myPlaces[0].name }}</h5>
     <q-input
       color="white"
@@ -47,7 +41,6 @@
         color="white"
         text-color="black"
       />
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
     </q-toolbar>
   </q-footer>
 </template>
@@ -90,18 +83,9 @@ export default defineComponent({
     };
   },
   async mounted() {
-<<<<<<< HEAD
-    this.placeCategory = myPlaces[0].tags
-    this.placeCategory.forEach((e: string)=>{
-      this.tags += `${e}`
-    })
-    this.$q.loading.show()
-    setTimeout(()=>{
-=======
     this.placeCategory = myPlaces[0].tags;
     this.$q.loading.show();
     setTimeout(() => {
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
       if (!window.kakao || !window.kakao.maps) {
         // script 태그 객체 생성
         const script = document.createElement('script');
