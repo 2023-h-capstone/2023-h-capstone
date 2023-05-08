@@ -11,7 +11,7 @@ import { useQuasar } from 'quasar';
 import MainDrawer from 'components/MainDrawer.vue';
 
 export default defineComponent({
-  name: 'MyPageLayout',
+  name: 'InfoPageLayout',
   components: { MainDrawer },
   setup() {
     return {};

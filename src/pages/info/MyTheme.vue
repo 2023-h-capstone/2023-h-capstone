@@ -1,5 +1,6 @@
 <template>
   <div style="padding-top: 4rem; padding-bottom: 3rem">
+    <add-theme-modal />
     <q-card
       class="my-card"
       flat
@@ -7,21 +8,6 @@
       v-for="(friendInfo, index) in friendsInfo"
       v-bind:key="index"
     >
-      <q-item>
-        <q-item-section avatar>
-          <q-btn round to="/info/friend">
-            <q-avatar>
-              <img :src="friendInfo.avatar" />
-            </q-avatar>
-          </q-btn>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>{{ friendInfo.name }}</q-item-label>
-          <q-item-label caption>
-            {{ friendInfo.relationship }}
-          </q-item-label>
-        </q-item-section>
-      </q-item>
       <q-separator />
       <q-item clickable style="padding: 0 !important">
         <q-card-section horizontal>
@@ -58,10 +44,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useQuasar } from 'quasar';
-import FriendInfoPage from 'pages/info/FriendInfoPage.vue';
-
 interface FriendInfo {
   avatar: string;
   name: string;
@@ -72,8 +54,14 @@ interface FriendInfo {
   tags: string[];
 }
 
+import { defineComponent, ref } from 'vue';
+import AddThemeModal from 'components/AddThemeModal.vue';
+
 export default defineComponent({
-  name: 'MainPage',
+  name: 'MyTheme',
+  components: {
+    AddThemeModal,
+  },
   setup() {
     const friendsInfo = ref<FriendInfo[]>([
       {
@@ -156,18 +144,6 @@ export default defineComponent({
     return {
       friendsInfo,
     };
-  },
-  data() {
-    return {
-      //
-    };
-  },
-  mounted() {
-    console.log(this.friendsInfo);
-    //
-  },
-  methods: {
-    //
   },
 });
 </script>

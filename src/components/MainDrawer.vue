@@ -1,17 +1,55 @@
 <template>
-  <q-header elevated class="bg-cyan-8 flex column" style="heigt: 5vh">
+  <q-header elevated>
     <q-toolbar>
-      <q-toolbar-title> 수뭉이네 밥집 </q-toolbar-title>
-      <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+      <q-toolbar-title
+        >수뭉이네<br />밥집 <q-btn flat round dense icon="home" to="/main"
+      /></q-toolbar-title>
     </q-toolbar>
   </q-header>
+  <q-footer elevated class="flex column" style="heigt: 5vh">
+    <q-toolbar>
+      <q-tabs
+        no-caps
+        active-color="primary"
+        style="width: 100%"
+        indicator-color="transparent"
+        class="text-grey-8 flex row justify-evenly"
+        v-model="tab"
+      >
+        <q-btn
+          style="margin: auto"
+          round
+          color="brown-5"
+          name="home"
+          icon="home"
+          to="/main"
+        />
+        <q-btn
+          style="margin: auto"
+          round
+          color="brown-5"
+          name="add"
+          icon="add"
+          to="/article/theme"
+        />
+        <q-btn
+          style="margin: auto"
+          flat
+          @click="drawer = !drawer"
+          round
+          dense
+          icon="menu"
+        />
+      </q-tabs>
+    </q-toolbar>
+  </q-footer>
 
-  <q-drawer v-model="drawer" show-if-above :width="400" :breakpoint="600">
+  <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="400">
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
         <q-card-section class="row items-center no-wrap">
           <div>
-            <q-input outlined v-model="id" label="id입력" />
+            <q-input outlined label="id입력" />
             <q-btn
               style="width: 100%"
               color="white"
@@ -30,19 +68,18 @@
         border-right: 1px solid #ddd;
       "
     >
->>>>>>> 39663c2f2704f478139e056bcd2bb6fdf91862e1
       <q-list padding>
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-icon name="star" />
           </q-item-section>
-          <q-item-section> 내 즐겨찾기 모음 </q-item-section>
+          <q-item-section> 지역구 필터 </q-item-section>
         </q-item>
         <q-item clickable v-ripple to="/article/themes">
           <q-item-section avatar>
             <q-icon name="edit" />
           </q-item-section>
-          <q-item-section> 게시글 작성 </q-item-section>
+          <q-item-section> 해쉬태그 필터 </q-item-section>
         </q-item>
         <q-item clickable v-ripple @click="open('top')">
           <q-item-section avatar>
@@ -50,27 +87,13 @@
           </q-item-section>
           <q-item-section> 친구 추가 </q-item-section>
         </q-item>
-        <div style="margin: 20px">
-          <q-input
-            style="margin: 5px"
-            v-model="hashTagFilter"
-            label="해쉬태그 필터"
-            :dense="true"
-          />
-          <q-input
-            style="margin: 5px"
-            v-model="placeFilter"
-            label="지역구 필터"
-            :dense="true"
-          />
-        </div>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/info/favorite">
           <q-item-section avatar>
             <q-icon name="casino" />
           </q-item-section>
-          <q-item-section> 나는 오늘 뭘 먹을까 </q-item-section>
+          <q-item-section>즐겨찾기 모음</q-item-section>
         </q-item>
-        <q-item clickable v-ripple to="/mypage/mypage">
+        <q-item clickable v-ripple to="/info/my">
           <q-item-section avatar>
             <q-icon name="face" />
           </q-item-section>
@@ -85,13 +108,7 @@
       style="height: 150px"
     >
       <div class="absolute-bottom bg-transparent">
-        <q-avatar size="56px" class="q-mb-sm">
-          <img
-            src="https://i.pinimg.com/564x/6c/ab/38/6cab3803e1d182a6c2e53fc62e821efa.jpg"
-          />
-        </q-avatar>
-        <div class="text-weight-bold text-black">농담곰</div>
-        <div class="text-weight-bold text-black">damgom@nagano.com</div>
+        <div class="text-weight-bold text-black">수뭉이네 밥집</div>
       </div>
     </q-img>
   </q-drawer>
@@ -107,6 +124,7 @@ export default defineComponent({
     const position = ref('top');
     return {
       drawer: ref(false),
+      tab: ref('home'),
       $q: useQuasar(),
       dialog,
       position,

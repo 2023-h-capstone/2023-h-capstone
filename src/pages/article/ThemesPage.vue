@@ -1,5 +1,5 @@
 <template>
-  <q-layout style="text-align: left; padding-top: 5vh">
+  <q-layout style="text-align: left; padding-top: 4rem">
     <q-list bordered>
       <q-item
         v-for="(place, key) in places"
@@ -23,7 +23,7 @@
       <q-separator />
     </q-list>
   </q-layout>
-  <q-footer reveal elevated class="bg-cyan-8 justify-end">
+  <q-footer reveal elevated class="bg-primary justify-end">
     <q-toolbar class="justify-between">
       <div class="flex items-center justify-end" style="width: 100%">
         <q-btn

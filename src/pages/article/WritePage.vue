@@ -1,6 +1,6 @@
 <template>
   <q-layout id="map" :style="mapStyle"></q-layout>
-  <q-footer reveal elevated class="bg-cyan-8 justify-end">
+  <q-footer reveal elevated class="bg-primary justify-end">
     <h5 style="margin: 1.5%">{{ myPlaces[0].name }}</h5>
     <q-input
       color="white"

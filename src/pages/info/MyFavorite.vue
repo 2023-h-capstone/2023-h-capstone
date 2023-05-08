@@ -58,10 +58,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useQuasar } from 'quasar';
-import FriendInfoPage from 'pages/info/FriendInfoPage.vue';
-
 interface FriendInfo {
   avatar: string;
   name: string;
@@ -72,8 +68,11 @@ interface FriendInfo {
   tags: string[];
 }
 
+import { defineComponent, ref } from 'vue';
+
 export default defineComponent({
-  name: 'MainPage',
+  name: 'MyFavorite',
+  components: {},
   setup() {
     const friendsInfo = ref<FriendInfo[]>([
       {
@@ -156,18 +155,6 @@ export default defineComponent({
     return {
       friendsInfo,
     };
-  },
-  data() {
-    return {
-      //
-    };
-  },
-  mounted() {
-    console.log(this.friendsInfo);
-    //
-  },
-  methods: {
-    //
   },
 });
 </script>

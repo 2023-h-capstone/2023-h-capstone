@@ -12,10 +12,23 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/MainPage.vue') }],
   },
   {
-    path: '/mypage',
-    component: () => import('layouts/MypageLayout.vue'),
+    path: '/info',
+    component: () => import('layouts/InfopageLayout.vue'),
     children: [
-      { path: 'mypage', component: () => import('pages/MypagePage.vue') },
+      { path: 'my', component: () => import('pages/info/MyInfoPage.vue') },
+      {
+        path: 'friend',
+        component: () => import('pages/info/FriendInfoPage.vue'),
+      },
+      {
+        path: 'setting',
+        component: () => import('pages/info/InfoSettingPage.vue'),
+      },
+      {
+        path: 'favorite',
+        component: () => import('pages/info/MyFavorite.vue'),
+      },
+      { path: 'theme', component: () => import('pages/info/MyTheme.vue') },
     ],
   },
   {
@@ -23,7 +36,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/ArticleLayout.vue'),
     children: [
       {
-        path: 'themes',
+        path: 'theme',
         component: () => import('pages/article/ThemesPage.vue'),
       },
       { path: 'write', component: () => import('pages/article/WritePage.vue') },
