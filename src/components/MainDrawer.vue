@@ -44,7 +44,7 @@
     </q-toolbar>
   </q-footer>
 
-  <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="320">
+  <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="200">
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
         <q-card-section class="row items-center no-wrap">
