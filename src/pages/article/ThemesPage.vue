@@ -23,7 +23,7 @@
       <q-separator />
     </q-list>
   </q-layout>
-  <q-footer reveal elevated class="bg-primary justify-end">
+  <q-footer reveal elevated class="bg-black justify-end">
     <q-toolbar class="justify-between">
       <div class="flex items-center justify-end" style="width: 100%">
         <q-btn
