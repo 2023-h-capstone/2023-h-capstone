@@ -23,7 +23,7 @@
         </q-item-section>
       </q-item>
       <q-separator />
-      <q-item clickable style="padding: 0 !important">
+      <q-item clickable style="padding: 0 !important" to="/article/write">
         <q-card-section horizontal>
           <q-img
             style="width: 20%"
