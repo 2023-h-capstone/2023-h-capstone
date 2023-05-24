@@ -1,5 +1,5 @@
 <template>
-  <q-layout style="text-align: left; padding-top: 4rem">
+  <q-layout style="text-align: left; padding-top: 4rem; padding-left: 1rem; padding-right: 1rem">
     <q-list bordered>
       <q-item
         v-for="(place, key) in places"

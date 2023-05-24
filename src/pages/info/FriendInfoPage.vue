@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top: 4rem; padding-bottom: 3rem">
+  <div style="padding-top: 4rem; padding-bottom: 3rem; padding-left: 1rem; padding-right: 1rem">
     <q-card class="my-card" flat bordered>
       <q-item>
         <q-item-section avatar>
