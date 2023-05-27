@@ -167,7 +167,10 @@ export default defineComponent({
     };
   },
   mounted() {
-    //
+    if(this.$route.query.access_token != undefined) {
+      Kakao.Auth.setAccessToken(this.$route.query.access_code)
+      this.$router.push('/main')
+    }
   },
   methods: {
     //

@@ -8,13 +8,6 @@ import axios from 'axios';
 const formUrlEncoded = (x: any) =>
   Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
 
-// {
-//   grant_type: 'authorization_code',
-//     client_id: 'cefd68b291889544b70649adfd787850',
-//   redirect_uri: 'http://localhost:9100/auth',
-//   code: code
-// }
-
 export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
   app.get(resolve.urlPath('/auth'), async (req, res) => {
     res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -75,9 +68,10 @@ export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
 
           // Render Error Page on production or
           // create a route (/src/routes) for an error page and redirect to it
-          res.status(500).send(err.stack);
+          res.status(500).send('500 | Internal Server Error');
           // console.error(err.stack)
         }
       });
   });
+
 });
