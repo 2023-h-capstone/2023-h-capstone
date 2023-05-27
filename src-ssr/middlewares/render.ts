@@ -38,7 +38,6 @@ export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
   // over to Vue and Vue Router to render our page
   app.get(resolve.urlPath('*'), (req, res) => {
     res.setHeader('Content-Type', 'text/html');
-
     render(/* the ssrContext: */ { req, res })
       .then((html) => {
         // now let's send the rendered html to the client
@@ -76,7 +75,7 @@ export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
 
           // Render Error Page on production or
           // create a route (/src/routes) for an error page and redirect to it
-          res.status(500).send('500 | Internal Server Error');
+          res.status(500).send(err.stack);
           // console.error(err.stack)
         }
       });
