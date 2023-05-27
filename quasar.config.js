@@ -130,7 +130,7 @@ module.exports = configure(function (/* ctx */) {
       // extendSSRWebserverConf (esbuildConf) {},
       // extendPackageJson (json) {},
 
-      pwa: false,
+      pwa: true,
 
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
@@ -139,6 +139,7 @@ module.exports = configure(function (/* ctx */) {
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
+        'auth',
         'render', // keep this as last one
       ],
     },
