@@ -1,12 +1,12 @@
 <template>
-  <q-header elevated>
+  <q-header elevated class = "bg-black">
     <q-toolbar>
       <q-toolbar-title
         >수뭉이네<br />밥집 <q-btn flat round dense icon="home" to="/main"
       /></q-toolbar-title>
     </q-toolbar>
   </q-header>
-  <q-footer elevated class="flex column" style="heigt: 5vh">
+  <q-footer elevated class="bg-black flex column" style="heigt: 5vh">
     <q-toolbar>
       <q-tabs
         no-caps
@@ -18,23 +18,26 @@
       >
         <q-btn
           style="margin: auto"
-          round
-          color="brown-5"
+          flat
+          color="white"
           name="home"
           icon="home"
+          round
           to="/main"
         />
         <q-btn
           style="margin: auto"
-          round
-          color="brown-5"
+          flat
+          color="white"
           name="add"
           icon="add"
+          round
           to="/article/theme"
         />
         <q-btn
           style="margin: auto"
           flat
+          color="white"
           @click="drawer = !drawer"
           round
           dense
@@ -44,7 +47,7 @@
     </q-toolbar>
   </q-footer>
 
-  <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="400">
+  <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="800">
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
         <q-card-section class="row items-center no-wrap">
@@ -71,13 +74,13 @@
       <q-list padding>
         <q-item clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="star" />
+            <q-icon name="language" />
           </q-item-section>
           <q-item-section> 지역구 필터 </q-item-section>
         </q-item>
         <q-item clickable v-ripple to="/article/themes">
           <q-item-section avatar>
-            <q-icon name="edit" />
+            <q-icon name="tag" />
           </q-item-section>
           <q-item-section> 해쉬태그 필터 </q-item-section>
         </q-item>
@@ -89,7 +92,7 @@
         </q-item>
         <q-item clickable v-ripple to="/info/favorite">
           <q-item-section avatar>
-            <q-icon name="casino" />
+            <q-icon name="star" />
           </q-item-section>
           <q-item-section>즐겨찾기 모음</q-item-section>
         </q-item>
