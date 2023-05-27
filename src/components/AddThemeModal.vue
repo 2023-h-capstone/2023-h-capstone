@@ -92,6 +92,7 @@
           style="width: 100%"
           icon="edit"
           label="선택된 테마 추가하기"
+          @click="dialog = !dialog"
         />
       </q-card>
     </q-dialog>
