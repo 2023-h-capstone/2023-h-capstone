@@ -22,7 +22,6 @@ export default defineComponent({
   components: {},
   setup() {
     return {
-      alert: ref<boolean>(false),
     };
   },
   mounted() {
@@ -32,7 +31,7 @@ export default defineComponent({
   },
   methods: {
     kakao_signin: function () {
-      window.Kakao.Auth.authorize({
+      Kakao.Auth.authorize({
         // redirectUri: 'http://localhost:9150/auth',
         redirectUri: 'https://smustaurant.com/auth',
       });
