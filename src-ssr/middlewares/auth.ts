@@ -13,8 +13,8 @@ export default ssrMiddleware(async ({ app , resolve /*, publicPath, render */ })
       formUrlEncoded({
         grant_type: 'authorization_code',
         client_id: 'cefd68b291889544b70649adfd787850',
-        redirect_uri: 'http://localhost:9150/auth',
-        // redirect_uri: 'https://smustaurant.com/auth',
+        // redirect_uri: 'http://localhost:9150/auth',
+        redirect_uri: 'https://smustaurant.com/auth',
         code: req.query.code
       }),
       {
