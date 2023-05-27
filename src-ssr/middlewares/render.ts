@@ -1,11 +1,39 @@
 import { RenderError } from '@quasar/app-vite';
 import { ssrMiddleware } from 'quasar/wrappers';
-
+import axios from 'axios';
 // This middleware should execute as last one
 // since it captures everything and tries to
 // render the page with Vue
 
-export default ssrMiddleware(({ app, resolve, render, serve }) => {
+const formUrlEncoded = (x: any) =>
+  Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
+
+// {
+//   grant_type: 'authorization_code',
+//     client_id: 'cefd68b291889544b70649adfd787850',
+//   redirect_uri: 'http://localhost:9100/auth',
+//   code: code
+// }
+
+export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
+  app.get(resolve.urlPath('/auth'), async (req, res) => {
+    res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+    const v = await axios.post('https://kauth.kakao.com/oauth/token?',
+      formUrlEncoded({
+        grant_type: 'authorization_code',
+        client_id: 'cefd68b291889544b70649adfd787850',
+        // redirect_uri: 'http://localhost:9100/auth',
+        redirect_uri: 'https://smustaurant.com/auth',
+        code: req.query.code
+      }),
+      {
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Authorization': '20a405dbfd2aec0ce8c919b93737583e'
+        }
+      })
+    res.redirect(`/main?access_token=${v.data.access_token}`)
+  });
   // we capture any other Express route and hand it
   // over to Vue and Vue Router to render our page
   app.get(resolve.urlPath('*'), (req, res) => {
