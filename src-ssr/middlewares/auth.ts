@@ -8,7 +8,7 @@ const formUrlEncoded = (x: any) =>
 // more info on params: https://v2.quasar.dev/quasar-cli/developing-ssr/ssr-middlewares
 export default ssrMiddleware(async ({ app , resolve /*, publicPath, render */ }) => {
   app.get(resolve.urlPath('/auth'), async (req, res) => {
-    res.send('hello world')
+    res.redirect('/')
     // setTimeout(async ()=>{
     //   // res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
     //   // const v = await axios.post('https://kauth.kakao.com/oauth/token?',
