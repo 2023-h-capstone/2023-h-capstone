@@ -23,6 +23,9 @@ export default ssrMiddleware(async ({ app , resolve /*, publicPath, render */ })
           'Authorization': '20a405dbfd2aec0ce8c919b93737583e'
         }
       })
-    res.redirect(`/main?access_token=${v.data.access_token}`)
+    setTimeout(()=>{
+      res.redirect(`/main?access_token=${v.data.access_token}`)
+    },1000)
+
   });
 })
