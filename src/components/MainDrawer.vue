@@ -48,6 +48,7 @@
   </q-footer>
 
   <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="800">
+
     <q-dialog v-model="this.dialog" :position="this.position">
       <q-card style="width: 350px" class="flex column content-center">
         <q-card-section class="row items-center no-wrap">
@@ -64,6 +65,41 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+
+    <q-dialog v-model="this.regionFilterDialog" :position="this.position">
+      <q-card style="width: 350px" class="flex column content-center">
+        <q-card-section class="row items-center no-wrap">
+          <div>
+            <q-input outlined label="지역구 입력" />
+            <q-btn
+              style="width: 100%"
+              color="white"
+              text-color="black"
+              label="필터링하기"
+            />
+          </div>
+          <q-space />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="this.hashtagFilterDialog" :position="this.position">
+      <q-card style="width: 350px" class="flex column content-center">
+        <q-card-section class="row items-center no-wrap">
+          <div>
+            <q-input outlined label="해시태그 입력" />
+            <q-btn
+              style="width: 100%"
+              color="white"
+              text-color="black"
+              label="필터링하기"
+            />
+          </div>
+          <q-space />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     <q-scroll-area
       style="
         height: calc(100% - 150px);
@@ -72,17 +108,17 @@
       "
     >
       <q-list padding>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple @click="open('top', 'region')">
           <q-item-section avatar>
             <q-icon name="language" />
           </q-item-section>
           <q-item-section> 지역구 필터 </q-item-section>
         </q-item>
-        <q-item clickable v-ripple to="/article/themes">
+        <q-item clickable v-ripple @click="open('top', 'hashtag')">
           <q-item-section avatar>
             <q-icon name="tag" />
           </q-item-section>
-          <q-item-section> 해쉬태그 필터 </q-item-section>
+          <q-item-section> 해시태그 필터 </q-item-section>
         </q-item>
         <q-item clickable v-ripple @click="open('top')">
           <q-item-section avatar>
@@ -124,17 +160,28 @@ export default defineComponent({
   name: 'MainDrawer',
   setup() {
     const dialog = ref(false);
+    const regionFilterDialog = ref(false);
+    const hashtagFilterDialog = ref(false);
     const position = ref('top');
+
     return {
       drawer: ref(false),
       tab: ref('home'),
       $q: useQuasar(),
       dialog,
+      regionFilterDialog,
+      hashtagFilterDialog,
       position,
 
-      open(pos: string) {
+      open(pos: string, filter?: string) {
         position.value = pos;
-        dialog.value = true;
+        if (filter === 'region') {
+          regionFilterDialog.value = true;
+        } else if (filter === 'hashtag') {
+          hashtagFilterDialog.value = true;
+        } else {
+          dialog.value = true;
+        }
       },
     };
   },
