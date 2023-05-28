@@ -5,12 +5,11 @@ import { ssrMiddleware } from 'quasar/wrappers';
 // since it captures everything and tries to
 // render the page with Vue
 
-export default ssrMiddleware(({ app, resolve, render, serve }) => {
+export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
   // we capture any other Express route and hand it
   // over to Vue and Vue Router to render our page
   app.get(resolve.urlPath('*'), (req, res) => {
     res.setHeader('Content-Type', 'text/html');
-
     render(/* the ssrContext: */ { req, res })
       .then((html) => {
         // now let's send the rendered html to the client
@@ -53,4 +52,5 @@ export default ssrMiddleware(({ app, resolve, render, serve }) => {
         }
       });
   });
+
 });

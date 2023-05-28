@@ -23,7 +23,10 @@
         </q-item-section>
       </q-item>
       <q-separator />
-      <q-item clickable style="padding: 0 !important" to="/article/write">
+      <q-item
+        clickable
+        style="padding: 0 !important"
+      >
         <q-card-section horizontal>
           <q-img
             style="width: 20%"
@@ -61,6 +64,7 @@
 import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import FriendInfoPage from 'pages/info/FriendInfoPage.vue';
+import axios from 'axios';
 
 interface FriendInfo {
   avatar: string;
@@ -163,8 +167,10 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log(this.friendsInfo);
-    //
+    if(this.$route.query.access_token != undefined) {
+      Kakao.Auth.setAccessToken(this.$route.query.access_code)
+      this.$router.push('/main')
+    }
   },
   methods: {
     //
