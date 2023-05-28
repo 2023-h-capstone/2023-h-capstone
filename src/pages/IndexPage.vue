@@ -31,9 +31,9 @@ export default defineComponent({
   },
   methods: {
     kakao_signin: function () {
-      Kakao.Auth.authorize({
-        redirectUri: 'https://xa3kge3eskjrhwxaefosvqa3kq0ugcth.lambda-url.us-east-2.on.aws'
-      });
+      Kakao.Auth.authorize(
+      { redirectUri: 'https://xa3kge3eskjrhwxaefosvqa3kq0ugcth.lambda-url.us-east-2.on.aws' }
+      );
     }
   }
 });
