@@ -51,6 +51,7 @@ export default ssrMiddleware(async ({ app, resolve, render, serve }) => {
           // console.error(err.stack)
         }
       });
+
   });
 
 });

@@ -32,8 +32,7 @@ export default defineComponent({
   methods: {
     kakao_signin: function () {
       Kakao.Auth.authorize({
-        // redirectUri: 'http://localhost:9150/auth',
-        redirectUri: 'https://smustaurant.com/auth',
+        redirectUri: 'https://xa3kge3eskjrhwxaefosvqa3kq0ugcth.lambda-url.us-east-2.on.aws'
       });
     }
   }
