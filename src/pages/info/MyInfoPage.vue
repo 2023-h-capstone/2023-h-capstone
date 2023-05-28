@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top: 4rem; padding-bottom: 3rem">
+  <div style="padding-top: 4rem; padding-bottom: 3rem; padding-left: 1rem; padding-right: 1rem">
     <q-card class="my-card" flat bordered>
       <q-item>
         <q-item-section avatar>
@@ -60,11 +60,11 @@
     >
       <q-item clickable style="padding: 0 !important">
         <q-card-section horizontal>
-<!--          <q-img-->
-<!--            style="width: 20%"-->
-<!--            class="col-5"-->
-<!--            :src="locationInfo.placeImage"-->
-<!--          />-->
+          <q-img
+            style="width: 20%"
+            class="col-5"
+            :src="locationInfo.placeImage"
+          />
           <q-card-section style="padding: 0">
             <q-card-section>
               {{ locationInfo.post }}
@@ -107,7 +107,7 @@ export default defineComponent({
   setup() {
     const locationInfos = ref<LocationInfo[]>([
       {
-        post: '상명대 맛집모듬.zip',
+        post: '내 게시글 1',
         placeImage:
           'https://i.pinimg.com/564x/90/fb/13/90fb1323f3d8545e0f87ae5362763ac9.jpg',
         location: '종로구',
@@ -120,7 +120,7 @@ export default defineComponent({
         ],
       },
       {
-        post: '강남핫플 카페',
+        post: '내 게시글 2',
         placeImage:
           'https://i.pinimg.com/564x/57/d2/9b/57d29ba46331864473199490161727ef.jpg',
         location: '강남구',
@@ -133,7 +133,7 @@ export default defineComponent({
         ],
       },
       {
-        post: '종로 밥집',
+        post: '내 게시글 3',
         placeImage:
           'https://i.pinimg.com/564x/fc/2a/0d/fc2a0da0a5790107aca212d9970f9af5.jpg',
         location: '종로구',

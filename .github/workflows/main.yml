@@ -38,6 +38,7 @@ jobs:
         run: |
           npm i
           npm run build
+          
       - name: zip distributions
         run: zip -r 2023-h-capstone.zip ./dist ./appspec.yml ./scripts
 
