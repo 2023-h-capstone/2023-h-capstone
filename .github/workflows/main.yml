@@ -39,11 +39,6 @@ jobs:
           npm i
           npm run build
           
-      - name: build dist files
-        working-directory: ./dist/ssr
-        run: |
-          npm i
-          
       - name: zip distributions
         run: zip -r 2023-h-capstone.zip ./dist ./appspec.yml ./scripts
 
